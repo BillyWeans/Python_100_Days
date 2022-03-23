@@ -19,19 +19,21 @@ class Snake:
 
     def create_snake(self):
         for _ in range(self.snake_len):
-            snake_segment = Turtle("square")
-            snake_segment.penup()
-            snake_segment.color("white")
-            if len(self.body) == 0:
-                snake_segment_start_pos = 0
-            else:
-                last_segment = self.body[-1].xcor()
-                snake_segment_start_pos = last_segment - 20
-            snake_segment.setx(snake_segment_start_pos)
-            self.body.append(snake_segment)
+            self.add_segment()
+
+    def add_segment(self):
+        snake_segment = Turtle("square")
+        snake_segment.penup()
+        snake_segment.color("white")
+        if len(self.body) == 0:
+            snake_segment_start_pos = 0
+        else:
+            last_segment = self.body[-1].xcor()
+            snake_segment_start_pos = last_segment - 20
+        snake_segment.setx(snake_segment_start_pos)
+        self.body.append(snake_segment)
 
     def move(self):
-        time.sleep(.1)
         for i in range(len(self.body) - 1, 0, -1):
             new_x = self.body[i - 1].xcor()
             new_y = self.body[i - 1].ycor()
