@@ -20,3 +20,4 @@ class Net(Turtle):
                 self.penup()
                 self.penup()
                 self.forward(25)
+
