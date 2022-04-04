@@ -59,10 +59,10 @@ while True and (len(correct_guesses) != len(state_data.state)):
         print("You win!")
 
 # On Exit, print the missed guesses to a csv
-missed_guesses = []
-for state in state_data.state.values:
-    if state not in correct_guesses:
-        missed_guesses.append(state)
+missed_guesses = [state for state in state_data.state.values if state not in correct_guesses]
+# for state in state_data.state.values:
+#     if state not in correct_guesses:
+#         missed_guesses.append(state)
 
 missed_guesses_df = pandas.DataFrame(missed_guesses, columns=["State"])
 missed_guesses_df.to_csv("states_to_learn.csv")
