@@ -85,15 +85,12 @@ def search_passwds():
         messagebox.showerror(title="File Not Found", message="File 'data.json' could not be found!")
         return
 
-    try:
-        password_entry = password_entries[search_website]
-    except KeyError:
+    if search_website in password_entries:
+        messagebox.showinfo(title="Match Found", message=f"Website: {search_website}\n"
+                                                         f"Username: {password_entries[search_website]['username']}\n"
+                                                         f"Password: {password_entries[search_website]['password']}\n")
+    else:
         messagebox.showerror(title="No matching website", message=f"Website '{search_website}' was not found")
-        return
-
-    messagebox.showinfo(title="Match Found", message=f"Website: {search_website}\n"
-                        f"Username: {password_entry['username']}\n"
-                        f"Password: {password_entry['password']}\n")
 
 
 window = Tk()
